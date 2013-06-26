@@ -1,0 +1,33 @@
+0{
+- '{Comp}1'[ 
+    - ckRead1=0
+    - ckWrite1=1
+]
+- '{toto}2' [ 
+    - aBool=true
+]
+}
+
+5{
+- '{Comp}1'[ 
+    - ckRead1=7
+    - ckWrite1=1
+]
+
+- '{toto}2' [ 
+    - aBool=true
+]
+}
+
+10{
+- '{Comp}1'[ 
+    - ckRead1=3
+    - ckWrite1=2
+]
+
+- '{toto}2' [ 
+    - aBool=false
+]
+}
+
+(0,"{Scheduler}1:'Start_instant'",1)
