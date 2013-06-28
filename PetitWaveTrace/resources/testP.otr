@@ -1,33 +1,215 @@
 0{
-- '{Comp}1'[ 
+- '{Comp}1' [
     - ckRead1=0
     - ckWrite1=1
+    - ckRead2=2
+    - ckWrite2=3
+    - ckComput=4
+    - ckFilterTrue=5
+    - ckFilterFalse=6
+    - tab_Clocks=[{must_tick=false,act_tick=false,cannot_tick=false,dead=false,nb_tick=0,preced=false}, {must_tick=false,act_tick=false,cannot_tick=false,dead=false,nb_tick=0,preced=false}, {must_tick=false,act_tick=false,cannot_tick=false,dead=false,nb_tick=0,preced=false}, {must_tick=false,act_tick=false,cannot_tick=false,dead=false,nb_tick=0,preced=false}, {must_tick=false,act_tick=false,cannot_tick=false,dead=false,nb_tick=0,preced=false}, {must_tick=false,act_tick=false,cannot_tick=false,dead=false,nb_tick=0,preced=false}, {must_tick=false,act_tick=false,cannot_tick=false,dead=false,nb_tick=0,preced=false}]
+    - Mem=[0, 0]
+    - Data_Enable=[false, false]
+    - fifoComput_Filter=[]
+    - Sensor_1=[]
+    - Sensor_2=[]
+    - toContext=[]
+    - NumSensor1=1
+    - NumSensor2=2
 ]
-- '{toto}2' [ 
-    - aBool=true
+- '{Scheduler}1' [@run1,
+    - inst=false
+    - clk=0
+    - constr=0
+    - nbBoucle=0
 ]
+- '{AlternatesWith}1' [@s1,
+]
+- '{AlternatesWith}2' [@s1,
+]
+- '{StrictPrecedence}1' [@run1,
+    - decal=0
+]
+- '{StrictPrecedence}2' [@run1,
+    - decal=0
+]
+- '{FilteredBy}1' [@s0,
+    - y=0
+    - tabFilter=[0, 0, 1]
+]
+- '{Sensor}1' [@Start,
+    - v=0
+    - data=0
+]
+- '{Sensor}2' [@Start,
+    - v=0
+    - data=0
+]
+- '{Acq}1' [@Start,
+    - v=0
+    - data=0
+]
+- '{Acq}2' [@Start,
+    - v=0
+    - data=0
+]
+- '{Comput}1' [@Start,
+    - v=0
+    - nbDataLues=0
+    - readData=false
+    - data1=0
+    - data2=0
+    - result=0
+]
+- '{Filter}1' [@Start,
+    - v=0
+    - readThenWrite=false
+    - filter_readyTosend_toEnv=false
+    - data=0
+]
+- {env}1 [start]
+- {pte_SchedulerFin}1 [start]
+- {pte_SchedulerErreur}1 [start]
+- {pte_ComputErreur}1 [start]
+- {pty_Alternates_pw1_pr1}1 [start]
+- {pty_Alternates_pw2_pr2}1 [start]
+- {pty_Precedence_pr1_comput}1 [start]
+- {pty_Precedence_pr2_comput}1 [start]
+- {pty_FilteredBy}1 [start]
+- {pty_sync_Acq_Comput}1 [start]
+- {pty_seq_pw1_pr1_sync_Acq1Comput}1 [start]
+- {pty_seq_pw2_pr2_sync_Acq2Comput}1 [start]
+- {pty_Sensor1_data_1_2}1 [start]
+- {pty_Sensor2_data_1_2}1 [start]
+- {pty_Acq1_data_1_2}1 [start]
+- {pty_Acq2_data_1_2}1 [start]
+- {pty_Env_recv_result_0}1 [start]
+- {pty_Env_recv_result_2}1 [start]
+- {pty_Env_recv_result_4}1 [start]
+- {pty_Env_recv_result_6}1 [start]
+- {pty_Env_recv_result_8}1 [start]
+- {pty_Env_recv_result_10}1 [start]
+- {pty_Env_recv_result_12}1 [start]
+- {pty_Env_recv_result_14}1 [start]
+- {pty_Env_recv_result_16}1 [start]
+- {pty_Env_recv_result_6_12}1 [start]
+- {pty_Env_recv_result_4_10}1 [start]
+- {pty_Env_recv_result_4_6_10_12}1 [start]
+- {pty_Env_recv_result_2_8_14}1 [start]
+- {pty_Env_recv_result_2_6}1 [start]
+- {pty_Env_recv_result_2_6_8}1 [start]
+- {pty_Env_recv_result_2_6_8_12}1 [start]
+- {pty_Env_recv_result_2_6_8_12_14}1 [start]
+- {pty_Env_recv_result_2_4_8_10_14}1 [start]
+- {pty_Env_recv_result_2_4_6_8_10_12_14}1 [start]
+- Channels startAlt1, startAlt2, startStrictPrec1, startStrictPrec2, startFilteredBy, UpdateAlt1, UpdateAlt2, UpdateStrictPrec1, UpdateStrictPrec2, UpdateFilteredBy, endAlt1, endAlt2, endStrictPrec1, endStrictPrec2, endFilteredBy, sync_pw1, sync_pr1, sync_pw2, sync_pr2, sync_filterTrue, sync_filterFalse, sync_comput, port_Acq_Comput1, port_Acq_Comput2
+- Violated asserts: none
 }
 
-5{
-- '{Comp}1'[ 
-    - ckRead1=7
+1{
+- '{Comp}1' [
+    - ckRead1=0
     - ckWrite1=1
+    - ckRead2=2
+    - ckWrite2=3
+    - ckComput=4
+    - ckFilterTrue=5
+    - ckFilterFalse=6
+    - tab_Clocks=[{must_tick=false,act_tick=false,cannot_tick=false,dead=false,nb_tick=0,preced=false}, {must_tick=false,act_tick=false,cannot_tick=false,dead=false,nb_tick=0,preced=false}, {must_tick=false,act_tick=false,cannot_tick=false,dead=false,nb_tick=0,preced=false}, {must_tick=false,act_tick=false,cannot_tick=false,dead=false,nb_tick=0,preced=false}, {must_tick=false,act_tick=false,cannot_tick=false,dead=false,nb_tick=0,preced=false}, {must_tick=false,act_tick=false,cannot_tick=false,dead=false,nb_tick=0,preced=false}, {must_tick=false,act_tick=false,cannot_tick=false,dead=false,nb_tick=0,preced=false}]
+    - Mem=[0, 0]
+    - Data_Enable=[false, false]
+    - fifoComput_Filter=[]
+    - Sensor_1=[]
+    - Sensor_2=[]
+    - toContext=[]
+    - NumSensor1=1
+    - NumSensor2=2
 ]
-
-- '{toto}2' [ 
-    - aBool=true
+- '{Scheduler}1' [@run2,
+    - inst=false
+    - clk=7
+    - constr=0
+    - nbBoucle=0
 ]
+- '{AlternatesWith}1' [@s1,
+]
+- '{AlternatesWith}2' [@s1,
+]
+- '{StrictPrecedence}1' [@run1,
+    - decal=0
+]
+- '{StrictPrecedence}2' [@run1,
+    - decal=0
+]
+- '{FilteredBy}1' [@s0,
+    - y=0
+    - tabFilter=[0, 0, 1]
+]
+- '{Sensor}1' [@Start,
+    - v=0
+    - data=0
+]
+- '{Sensor}2' [@Start,
+    - v=0
+    - data=0
+]
+- '{Acq}1' [@Start,
+    - v=0
+    - data=0
+]
+- '{Acq}2' [@Start,
+    - v=0
+    - data=0
+]
+- '{Comput}1' [@Start,
+    - v=0
+    - nbDataLues=0
+    - readData=false
+    - data1=0
+    - data2=0
+    - result=0
+]
+- '{Filter}1' [@Start,
+    - v=0
+    - readThenWrite=false
+    - filter_readyTosend_toEnv=false
+    - data=0
+]
+- {env}1 [start]
+- {pte_SchedulerFin}1 [start]
+- {pte_SchedulerErreur}1 [start]
+- {pte_ComputErreur}1 [start]
+- {pty_Alternates_pw1_pr1}1 [start]
+- {pty_Alternates_pw2_pr2}1 [start]
+- {pty_Precedence_pr1_comput}1 [start]
+- {pty_Precedence_pr2_comput}1 [start]
+- {pty_FilteredBy}1 [start]
+- {pty_sync_Acq_Comput}1 [start]
+- {pty_seq_pw1_pr1_sync_Acq1Comput}1 [start]
+- {pty_seq_pw2_pr2_sync_Acq2Comput}1 [start]
+- {pty_Sensor1_data_1_2}1 [start]
+- {pty_Sensor2_data_1_2}1 [start]
+- {pty_Acq1_data_1_2}1 [start]
+- {pty_Acq2_data_1_2}1 [start]
+- {pty_Env_recv_result_0}1 [start]
+- {pty_Env_recv_result_2}1 [start]
+- {pty_Env_recv_result_4}1 [start]
+- {pty_Env_recv_result_6}1 [start]
+- {pty_Env_recv_result_8}1 [start]
+- {pty_Env_recv_result_10}1 [start]
+- {pty_Env_recv_result_12}1 [start]
+- {pty_Env_recv_result_14}1 [start]
+- {pty_Env_recv_result_16}1 [start]
+- {pty_Env_recv_result_6_12}1 [start]
+- {pty_Env_recv_result_4_10}1 [start]
+- {pty_Env_recv_result_4_6_10_12}1 [start]
+- {pty_Env_recv_result_2_8_14}1 [start]
+- {pty_Env_recv_result_2_6}1 [start]
+- {pty_Env_recv_result_2_6_8}1 [start]
+- {pty_Env_recv_result_2_6_8_12}1 [start]
+- {pty_Env_recv_result_2_6_8_12_14}1 [start]
+- {pty_Env_recv_result_2_4_8_10_14}1 [start]
+- {pty_Env_recv_result_2_4_6_8_10_12_14}1 [start]
+- Channels startAlt1, startAlt2, startStrictPrec1, startStrictPrec2, startFilteredBy, UpdateAlt1, UpdateAlt2, UpdateStrictPrec1, UpdateStrictPrec2, UpdateFilteredBy, endAlt1, endAlt2, endStrictPrec1, endStrictPrec2, endFilteredBy, sync_pw1, sync_pr1, sync_pw2, sync_pr2, sync_filterTrue, sync_filterFalse, sync_comput, port_Acq_Comput1, port_Acq_Comput2
+- Violated asserts: none
 }
-
-10{
-- '{Comp}1'[ 
-    - ckRead1=3
-    - ckWrite1=2
-]
-
-- '{toto}2' [ 
-    - aBool=false
-]
-}
-
-(0,"{Scheduler}1:'Start_instant'",1)

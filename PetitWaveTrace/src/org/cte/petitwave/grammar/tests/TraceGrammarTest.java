@@ -1,12 +1,10 @@
 package org.cte.petitwave.grammar.tests;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import java.util.List;
-import java.util.Map;
 
 import org.cte.petitwave.grammar.TraceGrammar;
 import org.junit.Test;
@@ -14,7 +12,6 @@ import org.petitparser.buffer.StringToken;
 import org.petitparser.buffer.Token;
 import org.petitparser.context.Context;
 import org.petitparser.context.Result;
-import org.petitparser.parser.Parser;
 
 public class TraceGrammarTest {
 	private final TraceGrammar parser = new TraceGrammar();
@@ -176,7 +173,7 @@ public class TraceGrammarTest {
 		if (theRule == null) {
 			return parser.parse(new Context(input));
 		}
-		return parser.parserAt(theRule).end().parse(new Context(input));
+		return parser.ref(theRule).end().parse(new Context(input));
 	}
 	
 	private Result assertValid(String input, String rule) {

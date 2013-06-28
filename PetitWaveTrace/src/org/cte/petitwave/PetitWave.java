@@ -2,17 +2,13 @@ package org.cte.petitwave;
 
 
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 
-import org.petitparser.Parsing;
-import org.petitparser.buffer.Buffer;
-import org.petitparser.context.Context;
-import org.petitparser.context.Result;
-import org.petitparser.parser.Parser;
-import org.cte.petitwave.grammar.TraceGrammar;
+import org.antlr.v4.runtime.ANTLRFileStream;
+import org.antlr.v4.runtime.CommonTokenStream;
+import org.antlr.v4.runtime.tree.ParseTree;
+import org.cte.PetitWaveTrace.grammar.TraceGrammarLexer;
+import org.cte.PetitWaveTrace.grammar.TraceGrammarParser;
 
 public class PetitWave {
 
@@ -21,24 +17,20 @@ public class PetitWave {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
-		BufferedReader br;
+		ANTLRFileStream fs;
 		try {
-			br = new BufferedReader(new FileReader("C:\\java\\workspace\\PetitWaveTrace\\resources\\testP.otr"));
-		} catch (FileNotFoundException e) {
+			fs = new ANTLRFileStream("C:\\scm\\WaveTrace\\PetitWaveTrace\\resources\\testP.otr");
+		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return;
 		}
-		Parser traceParser = new TraceGrammar();
-
-		Result r = Parsing.parse(traceParser, br.toString());
-		try {
-			br.close();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		TraceGrammarLexer lexer = new TraceGrammarLexer(fs);
+		CommonTokenStream tokens = new CommonTokenStream(lexer);
+		TraceGrammarParser parser = new TraceGrammarParser(tokens);
+		ParseTree tree = parser.traceFile();
+		
+		System.out.println(tree.toStringTree(parser));
 	}
 
 }

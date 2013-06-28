@@ -2,26 +2,26 @@ package org.cte.petitwave.model;
 
 import java.util.List;
 
+import com.google.common.collect.Lists;
+
 public class Configuration extends TraceEntry {
 	private int id; 
-	private List<Process> processes;
+	private List<TrProcess> processes;
 	private List<Property> properties;
-	private List<Channel>  channels;
-	private List<FailedAssert> fasserts;
+	private List<String>  channels;
+	private List<InstanceName> fasserts;
 	
-	public Configuration(int id, List<Process> proc, List<Property> prop, List<Channel> chan, List<FailedAssert> fasserts) {
-		this.id = id;
-		this.processes = proc;
-		this.properties = prop;
-		this.channels = chan;
-		this.fasserts = fasserts;
+	public Configuration() {
+		this.processes = Lists.newArrayList();
+		this.channels  = Lists.newArrayList();
+		this.fasserts  = Lists.newArrayList();
 	}
-
-	public List<Process> getProcesses() {
+	
+	public List<TrProcess> getProcesses() {
 		return processes;
 	}
 
-	public void setProcesses(List<Process> processes) {
+	public void setProcesses(List<TrProcess> processes) {
 		this.processes = processes;
 	}
 
@@ -41,19 +41,19 @@ public class Configuration extends TraceEntry {
 		this.id = id;
 	}
 
-	public List<Channel> getChannels() {
+	public List<String> getChannels() {
 		return channels;
 	}
 
-	public void setChannels(List<Channel> channels) {
+	public void setChannels(List<String> channels) {
 		this.channels = channels;
 	}
 
-	public List<FailedAssert> getFasserts() {
+	public List<InstanceName> getFasserts() {
 		return fasserts;
 	}
 
-	public void setFasserts(List<FailedAssert> fasserts) {
+	public void setFasserts(List<InstanceName> fasserts) {
 		this.fasserts = fasserts;
 	}
 
